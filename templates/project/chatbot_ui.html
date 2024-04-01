@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Chatbot UI</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
     <style>
       body {
         margin: 0;
@@ -112,8 +111,9 @@
 
       function sendMessage() {
         var userInput = document.getElementById("user-input").value;
+        console.log(userInput);
         displayMessage(userInput, "user");
-
+        document.getElementById("user-input").value = "";
         // Make an AJAX request to Django backend
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
@@ -126,6 +126,7 @@
         xhr.open("POST", "/", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken")); // Include CSRF token
+        console.log(JSON.stringify({ message: userInput }));
         xhr.send(JSON.stringify({ message: userInput }));
       }
 
