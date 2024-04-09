@@ -5,7 +5,7 @@ from crewai import Agent, Task, Process, Crew
 from langchain_google_genai import ChatGoogleGenerativeAI
 import json
 from django.http import JsonResponse
-api_key = "AIzaSyDGp7zaOeZGQA_-rCHn9VrmK4lldJkdu24"
+api_key = "your api key"
 def chatbot_ui(request):  
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
